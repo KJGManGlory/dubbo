@@ -6,7 +6,7 @@ spring:
     application:
       name: consumer
     registry:
-      address: zookeeper://111.231.65.247:32181
+      address: zookeeper://111.231.65.247:2181
     protocol:
       name: dubbo
       port: 20880
