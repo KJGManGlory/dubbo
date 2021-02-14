@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd        http://dubbo.apache.org/schema/dubbo        http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!-- 1. 设置应用名称 -->
+    <dubbo:application name="hello-world-app"/>
+
+    <!-- 2. 指定注册中心 -->
+    <dubbo:registry protocol="zookeeper" address="49.235.253.110:2181" />
+
+    <!-- 3. 指定协议和端口 -->
+    <dubbo:protocol name="dubbo" port="20880" />
+
+    <!-- 4. 声明需要暴露的服务接口, ref 指定接口实现类 -->
+    <dubbo:service interface="com.lizza.api.UserService" ref="userServiceImpl" />
+
+    <!-- 5. 将接口的实现类添加到 IOC 容器中 -->
+    <bean id="userServiceImpl" class="com.lizza.provider.service.UserServiceImpl" />
+</beans>
