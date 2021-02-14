@@ -1,10 +1,12 @@
 package com.lizza.consumer.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.lizza.provider.service.ProviderService;
+import com.lizza.api.UserService;
+import com.lizza.entity.Address;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 /**
  * @Desc:
@@ -13,13 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping
-public class ConsumerController {
+public class UserController {
 
     @Reference
-    private ProviderService providerService;
+    private UserService userService;
 
-    @GetMapping("/hello")
-    public String hello() {
-        return providerService.hello();
+    @GetMapping("/getAddressByUserId")
+    public List<Address> getAddressByUserId(int id) {
+        return userService.getAddressByUserId(id);
     }
 }
