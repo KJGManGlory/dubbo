@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://dubbo.apache.org/schema/dubbo
+       http://dubbo.apache.org/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 1. 设置服务名称 -->
+    <dubbo:application name="dubbo-consumer-spring"/>
+
+    <!-- 2. 指定注册中心 -->
+    <dubbo:registry protocol="zookeeper" address="49.235.253.110:2181"/>
+
+    <!-- 3. 指定远程服务 -->
+    <dubbo:reference id="userService" interface="com.lizza.api.UserService"/>
+
+    <!-- 4. 将 OrderServiceImpl 加入 Spring 容器 -->
+    <context:component-scan base-package="com.lizza.consumer.service"/>
+</beans>

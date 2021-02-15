@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd        http://dubbo.apache.org/schema/dubbo        http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 1. 设置应用名称 -->
-    <dubbo:application name="hello-world-app"/>
+    <dubbo:application name="dubbo-provider-spring"/>
 
     <!-- 2. 指定注册中心 -->
     <dubbo:registry protocol="zookeeper" address="49.235.253.110:2181" />
